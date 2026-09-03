@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop — Namita Ji</title>
+<meta name="description" content="Shop authentic Bihari snacks and sweets — Namkeen, Sweets and Ready Mix — from Namita Ji." />
+<link rel="icon" href="/images/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/animations.css" />
+<style>
+  .page-banner { background: linear-gradient(120deg, var(--maroon), var(--maroon-dark)); color: var(--white); padding: 48px 20px; text-align: center; }
+  .page-banner h1 { color: var(--white); margin-bottom: 4px; }
+  .page-banner p { color: var(--cream-dark); }
+  .products { padding-top: 40px; }
+  .product-grid { max-width: none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span class="trust-marquee"><span class="trust-track"><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span></span></span>
+    <span class="trust-marquee"><span class="trust-track"><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span></span></span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
+    <a href="/" class="brand">
+      <div class="brand-badge"><img src="/images/logo.svg" alt="Namita Ji logo" /></div>
+      <div>
+        <div class="brand-name">Namita Ji</div>
+        <div class="brand-tag">Traditional Indian Snacks &amp; Food</div>
+      </div>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="/">Home</a>
+      <a href="/shop.html" class="active">Shop</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="profile-wrap" id="profileWrap">
+        <button class="icon-btn" id="profileBtn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><circle cx="12" cy="9.75" r="3.25"/><path d="M5.6 18.4c1.2-2.4 3.5-3.6 6.4-3.6s5.2 1.2 6.4 3.6"/></svg>
+        </button>
+        <div class="profile-menu" id="profileMenu"></div>
+      </div>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5h11l-1 11.5a2 2 0 0 1-2 1.8H9.5a2 2 0 0 1-2-1.8L6.5 8.5Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+        <span class="badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-banner">
+  <h1>Shop Our Collection</h1>
+  <p>Freshly made, traditionally packed, delivered pan-India</p>
+</div>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-chip active" data-cat="">All</button>
+      <button class="filter-chip" data-cat="Namkeen">Namkeen</button>
+      <button class="filter-chip" data-cat="Sweets">Sweets</button>
+      <button class="filter-chip" data-cat="Ready Mix">Ready Mix</button>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <p style="text-align:center; color: var(--muted);">Loading products…</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Namita Ji</h4>
+      <p>Traditional Indian snacks &amp; food, made with love in Bihar and shipped fresh across India.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="/shop.html?category=Namkeen">Namkeen</a></li>
+        <li><a href="/shop.html?category=Sweets">Sweets</a></li>
+        <li><a href="/shop.html?category=Ready%20Mix">Ready Mix</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">Our Story</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/profile.html">My Account</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>📞 +91 6207227094</li>
+        <li>✉️ hello@namitaji.com</li>
+        <li>📍 Office: Chandpur, Katihar, Bihar 854101</li>
+        <li>📍 Address: Dira Chandpur, Chandpur, Katihar, Bihar 854101</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">© <span id="year"></span> Namita Ji. All rights reserved.</div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-header"><h3>Your Cart</h3><button class="drawer-close" id="closeCart">✕</button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-footer" id="cartFooter" hidden>
+    <div class="summary-row"><span>Items Total</span><span id="sumItems">₹0</span></div>
+    <div class="summary-row"><span>Shipping</span><span id="sumShipping">₹0</span></div>
+    <div class="summary-row total"><span>To Pay</span><span id="sumTotal">₹0</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<div class="modal-backdrop" id="authBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="authClose">✕</button>
+    <h2 id="authTitle">Welcome Back</h2>
+    <p class="sub" id="authSub">Log in to continue to checkout</p>
+    <div class="form-error" id="authError"></div>
+    <form id="authForm">
+      <div class="field" id="nameField" hidden><label>Full Name</label><input type="text" id="authName" autocomplete="name" /></div>
+      <div class="field"><label>Email</label><input type="email" id="authEmail" autocomplete="email" required /></div>
+      <div class="field" id="phoneField" hidden><label>Phone</label><input type="tel" id="authPhone" autocomplete="tel" /></div>
+      <div class="field"><label>Password</label><input type="password" id="authPassword" autocomplete="current-password" required /></div>
+      <button type="submit" class="btn btn-primary btn-block" id="authSubmit">Log In</button>
+    </form>
+    <div class="form-toggle"><span id="authToggleText">New here?</span> <button id="authToggleBtn">Create an account</button></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="checkoutBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="checkoutClose">✕</button>
+    <h2>Delivery Address</h2>
+    <p class="sub">Where should we deliver your order?</p>
+    <div class="form-error" id="checkoutError"></div>
+    <form id="checkoutForm">
+      <div class="field"><label>Address Line 1</label><input type="text" id="addrLine1" required /></div>
+      <div class="field"><label>Address Line 2 (optional)</label><input type="text" id="addrLine2" /></div>
+      <div class="field"><label>City</label><input type="text" id="addrCity" required /></div>
+      <div class="field"><label>State</label><input type="text" id="addrState" required /></div>
+      <div class="field"><label>Pincode</label><input type="text" id="addrPincode" required /></div>
+      <div class="field"><label>Phone</label><input type="tel" id="addrPhone" required /></div>
+      <button type="submit" class="btn btn-primary btn-block" id="checkoutSubmit">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast-root"></div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/products.js"></script>
+<script src="/js/checkout.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* ===== Site-wide motion system ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---- Scroll reveal (auto-applied by animations.js) ---- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+.reveal.in-view { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left.in-view { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-right.in-view { opacity: 1; transform: none; }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale.in-view { opacity: 1; transform: scale(1); }
+
+/* ---- Topbar trust-badge marquee (continuous horizontal scroll) ---- */
+.trust-track { animation: marquee 14s linear infinite; }
+.topbar:hover .trust-track { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---- Logo badge entrance + idle shimmer ---- */
+.brand-badge {
+  opacity: 0; animation: badgeIn 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.15s forwards;
+}
+@keyframes badgeIn {
+  from { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+.brand-badge img {
+  animation: badgeFloat 4.5s ease-in-out 1s infinite;
+}
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* ---- Hero entrance (runs once on load, no scroll trigger) ---- */
+.hero-inner > div > * { opacity: 0; animation: heroUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+.hero-inner h1 { animation-delay: 0.1s; }
+.hero-inner p { animation-delay: 0.28s; }
+.hero-inner .hero-actions { animation-delay: 0.44s; }
+@keyframes heroUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---- Sticky header shrink on scroll ---- */
+header.site-header { transition: box-shadow 0.3s ease; }
+header.site-header.scrolled .header-inner { padding-top: 8px; padding-bottom: 8px; }
+.header-inner { transition: padding 0.25s ease; }
+header.site-header.scrolled { box-shadow: 0 6px 22px rgba(90,20,30,0.28); }
+
+/* ---- Button ripple ---- */
+.btn, .icon-btn, .filter-chip, .amount-chip { position: relative; overflow: hidden; }
+.btn-ripple {
+  position: absolute; border-radius: 50%; transform: scale(0); pointer-events: none;
+  background: rgba(255,255,255,0.55); animation: rippleAnim 0.6s ease-out forwards;
+}
+@keyframes rippleAnim { to { transform: scale(2.6); opacity: 0; } }
+
+/* ---- Cart badge pop ---- */
+.badge.pop { animation: badgePop 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes badgePop { 0% { transform: scale(1); } 40% { transform: scale(1.5); } 100% { transform: scale(1); } }
+
+/* ---- Cart icon jiggle on add ---- */
+#cartBtn.jiggle { animation: jiggle 0.5s ease; }
+@keyframes jiggle { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-12deg); } 40% { transform: rotate(10deg); } 60% { transform: rotate(-6deg); } 80% { transform: rotate(4deg); } }
+
+/* ---- Scroll-to-top button ---- */
+#scrollTopBtn {
+  position: fixed; bottom: 26px; right: 26px; z-index: 90; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--maroon); color: var(--white); border: none; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(90,20,30,0.35); cursor: pointer; font-size: 1.1rem;
+  opacity: 0; transform: translateY(16px) scale(0.8); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+#scrollTopBtn.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+#scrollTopBtn:hover { background: var(--maroon-dark); transform: translateY(-3px) scale(1.05); }
+
+/* ---- Modal / drawer entrance polish ---- */
+.modal { animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* ---- Skeleton loading shimmer (for product grids while fetching) ---- */
+.skeleton-card { border-radius: 20px; overflow: hidden; background: var(--white); border: 1px solid var(--cream-dark); }
+.skeleton-block {
+  background: linear-gradient(90deg, var(--cream-dark) 25%, #efe3cf 37%, var(--cream-dark) 63%);
+  background-size: 400% 100%; animation: shimmer 1.4s ease infinite;
+}
+.skeleton-card .skeleton-img { height: 190px; }
+.skeleton-card .skeleton-line { height: 12px; margin: 14px 16px; border-radius: 6px; }
+.skeleton-card .skeleton-line.short { width: 40%; }
+@keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+
+/* ---- Number count-up target styling hook (no visuals, just marks JS target) ---- */
+.count-up { display: inline-block; }
+
+/* ---- Nav link underline sweep already exists; add icon hover bounce ---- */
+.icon-btn svg { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+.icon-btn:hover svg { transform: scale(1.12) rotate(-4deg); }
+
+/* ---- Star input hover pulse (product review form) ---- */
+.star-input span { transition: transform 0.15s ease, color 0.15s ease; }
+.star-input span:hover { transform: scale(1.25); }
+
+/* ---- Toast entrance already animates; add exit shrink handled by JS removal ---- */

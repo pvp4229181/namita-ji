@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" width="300" height="220">
+  <defs>
+    <path id="tagArc" d="M 60 168 A 90 90 0 0 0 240 168" />
+  </defs>
+  <ellipse cx="150" cy="110" rx="138" ry="99" fill="#6b1420" stroke="#ffffff" stroke-width="4"/>
+  <ellipse cx="150" cy="110" rx="128" ry="90" fill="none" stroke="#ffffff" stroke-width="3"/>
+
+  <!-- simple mother & child silhouette -->
+  <g fill="#f2b53c">
+    <path d="M150 40c-9 0-17 7-19 16-7 3-12 10-12 18 0 4 1 7 3 10-5 9-8 20-8 30h72c0-11-3-21-8-30 2-3 3-6 3-10 0-8-5-15-12-18-2-9-10-16-19-16z" opacity="0"/>
+    <circle cx="150" cy="55" r="14"/>
+    <path d="M128 60c0-14 10-24 22-24s22 10 22 24c0 6-2 11-5 15 9 8 15 20 15 33h-64c0-13 6-25 15-33-3-4-5-9-5-15z" fill="#6b1420"/>
+    <circle cx="150" cy="55" r="13" fill="#f2b53c"/>
+    <circle cx="163" cy="82" r="9" fill="#f2b53c"/>
+  </g>
+
+  <text x="150" y="128" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-weight="700" font-size="46" fill="#f2b53c">NAMITA JI</text>
+
+  <text font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#f2b53c">
+    <textPath href="#tagArc" startOffset="50%" text-anchor="middle">TRADITIONAL INDIAN SNACKS &amp; FOOD</textPath>
+  </text>
+</svg>
