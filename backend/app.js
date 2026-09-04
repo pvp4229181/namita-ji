@@ -19,7 +19,7 @@ const webhookRoutes = require('./routes/webhook');
 
 const app = express();
 
-connectDB();
+connectDB().catch(() => {}); // errors are already logged in connectDB; don't crash the process
 
 app.set('trust proxy', 1);
 
