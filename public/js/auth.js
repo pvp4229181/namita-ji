@@ -19,6 +19,7 @@ const Auth = (() => {
     document.getElementById('authSub').textContent = isSignup ? 'Sign up to start ordering' : 'Log in to continue to checkout';
     document.getElementById('nameField').hidden = !isSignup;
     document.getElementById('phoneField').hidden = !isSignup;
+    document.getElementById('confirmPasswordField').hidden = !isSignup;
     document.getElementById('authSubmit').textContent = isSignup ? 'Sign Up' : 'Log In';
     document.getElementById('authToggleText').textContent = isSignup ? 'Already have an account?' : 'New here?';
     document.getElementById('authToggleBtn').textContent = isSignup ? 'Log in' : 'Create an account';
@@ -128,7 +129,9 @@ const Auth = (() => {
         if (mode === 'signup') {
           const name = document.getElementById('authName').value.trim();
           const phone = document.getElementById('authPhone').value.trim();
+          const confirmPassword = document.getElementById('authConfirmPassword').value;
           if (!name) throw new Error('Please enter your name');
+          if (password !== confirmPassword) throw new Error('Passwords do not match');
           data = await api('/auth/signup', { method: 'POST', body: { name, email, password, phone } });
         } else {
           data = await api('/auth/login', { method: 'POST', body: { email, password } });

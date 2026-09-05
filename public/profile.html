@@ -204,6 +204,7 @@
       <div class="field"><label>Email</label><input type="email" id="authEmail" required /></div>
       <div class="field" id="phoneField" hidden><label>Phone</label><input type="tel" id="authPhone" /></div>
       <div class="field"><label>Password</label><input type="password" id="authPassword" required /></div>
+      <div class="field" id="confirmPasswordField" hidden><label>Confirm Password</label><input type="password" id="authConfirmPassword" autocomplete="new-password" /></div>
       <button type="submit" class="btn btn-primary btn-block" id="authSubmit">Log In</button>
     </form>
     <div class="form-toggle"><span id="authToggleText">New here?</span> <button id="authToggleBtn">Create an account</button></div>
@@ -214,6 +215,7 @@
 
 <script src="/js/api.js"></script>
 <script src="/js/auth.js"></script>
+<script src="/js/password-toggle.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/profile.js"></script>
 <script src="/js/main.js"></script>

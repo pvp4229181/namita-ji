@@ -510,6 +510,15 @@ footer.site-footer { background: var(--maroon-dark); color: var(--cream); paddin
 }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
 .form-error { color: var(--danger); font-size: 0.82rem; margin-bottom: 10px; min-height: 1em; }
+
+.pw-field-wrap { position: relative; }
+.pw-field-wrap input { padding-right: 56px; }
+.pw-toggle-btn {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; padding: 4px 8px; cursor: pointer;
+  font-size: 0.76rem; font-weight: 700; color: var(--muted);
+}
+.pw-toggle-btn:hover { color: var(--maroon); }
 .form-toggle { text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--muted); }
 .form-toggle button { background: none; border: none; color: var(--maroon); font-weight: 700; }
 
