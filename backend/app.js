@@ -22,9 +22,16 @@ const webhookRoutes = require('./routes/webhook');
 
 const app = express();
 
-connectDB().catch(() => {}); // errors are already logged in connectDB; don't crash the process
-
 app.set('trust proxy', 1);
+
+// Ensure a real DB connection exists before any request reaches a route —
+// on serverless (Vercel), a cold start otherwise lets queries fire before
+// Mongoose finishes connecting, and they buffer until they time out.
+app.use((req, res, next) => {
+  connectDB()
+    .then(() => next())
+    .catch((err) => res.status(503).json({ error: 'Database unavailable', detail: err.message }));
+});
 
 app.use(
   helmet({

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 const Product = require('../models/Product');
 const Order = require('../models/Order');
@@ -55,6 +56,12 @@ router.post('/create', requireAuth, paymentLimiter, async (req, res) => {
       const id = String(i.productId || '');
       const qty = Math.max(1, Math.min(MAX_QTY_PER_ITEM, parseInt(i.quantity, 10) || 1));
       merged.set(id, Math.min(MAX_QTY_PER_ITEM, (merged.get(id) || 0) + qty));
+    }
+
+    for (const id of merged.keys()) {
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ error: 'One or more items are no longer available' });
+      }
     }
 
     const products = await Product.find({ _id: { $in: [...merged.keys()] }, isActive: true });

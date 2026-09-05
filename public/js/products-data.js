@@ -5,7 +5,7 @@
 // from `.local()` to the corresponding `api(...)` call in js/api.js — see the
 // `USE_STATIC_PRODUCTS` flag below, which every consumer (products.js,
 // bestsellers.js, product-detail.js) reads before deciding where to fetch from.
-const USE_STATIC_PRODUCTS = true;
+const USE_STATIC_PRODUCTS = false;
 
 const STATIC_PRODUCTS = [
   {
