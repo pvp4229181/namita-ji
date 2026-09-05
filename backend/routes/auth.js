@@ -5,6 +5,7 @@ const validator = require('validator');
 const rateLimit = require('express-rate-limit');
 const User = require('../models/User');
 const { requireAuth } = require('../middleware/auth');
+const { sendWelcomeEmail } = require('../utils/mailer');
 
 const router = express.Router();
 
@@ -56,6 +57,18 @@ router.post('/signup', authLimiter, async (req, res) => {
     });
     await user.setPassword(password);
     user.lastLoginAt = new Date();
+    await user.save();
+
+    // Best-effort — a broken mail server shouldn't fail account creation. Awaited
+    // (rather than fire-and-forget) because on serverless the process can be
+    // frozen the instant the response is sent, before a background send finishes.
+    try {
+      await sendWelcomeEmail(user);
+      user.welcomeEmail = { status: 'sent', sentAt: new Date() };
+    } catch (err) {
+      console.error('Welcome email error:', err.message);
+      user.welcomeEmail = { status: 'failed', error: err.message };
+    }
     await user.save();
 
     const token = signToken(user);

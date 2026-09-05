@@ -125,6 +125,7 @@ const Auth = (() => {
       try {
         const email = document.getElementById('authEmail').value.trim();
         const password = document.getElementById('authPassword').value;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('Please enter a valid email address');
         let data;
         if (mode === 'signup') {
           const name = document.getElementById('authName').value.trim();

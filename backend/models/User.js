@@ -34,7 +34,12 @@ const userSchema = new mongoose.Schema(
     // Sessions issued before this moment are rejected, so changing the password
     // really does sign the account out everywhere. See middleware/auth.js.
     passwordChangedAt: { type: Date },
-    lastLoginAt: { type: Date }
+    lastLoginAt: { type: Date },
+    welcomeEmail: {
+      status: { type: String, enum: ['pending', 'sent', 'failed'], default: 'pending' },
+      sentAt: { type: Date },
+      error: { type: String }
+    }
   },
   { timestamps: true }
 );
