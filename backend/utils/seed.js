@@ -15,7 +15,7 @@ const sampleProducts = [
     price: 180,
     mrp: 220,
     unit: '400g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mixture%20(the%20Indian%20snack)%20in%20Chennai.JPG'
+    image: '/images/mixture.jpg'
   },
   {
     name: 'Thekua',
@@ -25,7 +25,7 @@ const sampleProducts = [
     price: 220,
     mrp: 260,
     unit: '500g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Thekuaa.jpg'
+    image: '/images/thekua.jpg'
   },
   {
     name: 'Anarsa',
@@ -35,7 +35,7 @@ const sampleProducts = [
     price: 260,
     mrp: 300,
     unit: '400g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Magahi%20Anarsa.jpg'
+    image: '/images/anarsa.jpg'
   },
   {
     name: 'Litti Masala Mix',
@@ -45,7 +45,7 @@ const sampleProducts = [
     price: 150,
     mrp: 180,
     unit: '250g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Litti%20Chokha%2001.jpg'
+    image: '/images/litti-chokha.jpg'
   },
   {
     name: 'Chana Chur',
@@ -55,7 +55,7 @@ const sampleProducts = [
     price: 140,
     mrp: 160,
     unit: '350g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Besan%20ke%20sev.JPG'
+    image: '/images/besan-sev.jpg'
   },
   {
     name: 'Khaja',
@@ -65,7 +65,7 @@ const sampleProducts = [
     price: 240,
     mrp: 280,
     unit: '400g',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kakinada%20Khaja%20or%20Kotayya%20Khaja%20or%20Gottam%20Khaja-%20Sweet%20From%20kakinada%2C%20Andhrapradesh.JPG'
+    image: '/images/khaja.jpg'
   }
 ];
 

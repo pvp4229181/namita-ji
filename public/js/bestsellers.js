@@ -12,7 +12,7 @@ const Bestsellers = (() => {
     return `
       <a class="product-card${p.stock === 0 ? ' out-of-stock' : ''}" href="/product.html?slug=${encodeURIComponent(p.slug)}">
         <div class="product-img">
-          <img src="${p.image || '/images/placeholder-food.svg'}" alt="${escapeHtml(p.name)}" />
+          <img src="${p.image || '/images/placeholder-food.svg'}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async" />
           ${p.stock === 0 ? '<span class="stock-badge">Out of Stock</span>' : discountBadge(p)}
         </div>
         <div class="product-body">
