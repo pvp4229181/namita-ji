@@ -26,19 +26,30 @@ const orderSchema = new mongoose.Schema(
       pincode: String,
       phone: String
     },
-    razorpayOrderId: { type: String, required: true, index: true },
-    razorpayPaymentId: { type: String },
+    razorpayOrderId: { type: String, required: true, unique: true, index: true },
+    razorpayPaymentId: { type: String, index: true },
     razorpaySignature: { type: String },
+    paymentMethod: { type: String }, // upi / card / netbanking, as reported by Razorpay
+    capturedAtRazorpay: { type: Boolean, default: false }, // false = authorized but not yet captured
     status: {
       type: String,
       enum: ['created', 'paid', 'failed', 'refund_requested', 'refunded'],
       default: 'created',
       index: true
     },
+    // Guards the stock side effect so verify and the webhook racing on the same
+    // order can only ever decrement (or restore) inventory once. See utils/payments.js.
+    stockAdjusted: { type: Boolean, default: false },
+    stockWarning: { type: String },
     refund: {
       requestedAt: Date,
       reason: String,
-      status: { type: String, enum: ['none', 'requested', 'approved', 'rejected', 'processed'], default: 'none' },
+      status: {
+        type: String,
+        enum: ['none', 'requested', 'approved', 'rejected', 'processing', 'partial', 'processed'],
+        default: 'none'
+      },
+      amount: Number,
       razorpayRefundId: String,
       processedAt: Date,
       adminNote: String
@@ -47,5 +58,8 @@ const orderSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+orderSchema.index({ user: 1, createdAt: -1 });
+orderSchema.index({ 'refund.status': 1 });
 
 module.exports = mongoose.model('Order', orderSchema);

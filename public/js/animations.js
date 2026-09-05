@@ -60,7 +60,7 @@
 // Ripple effect on buttons/pills.
 (function ripple() {
   document.addEventListener('click', (e) => {
-    const el = e.target.closest('.btn, .filter-chip, .amount-chip, .icon-btn');
+    const el = e.target.closest('.btn, .filter-chip, .icon-btn');
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);

@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>My Account — Namita Ji</title>
-<link rel="icon" href="/images/logo.svg" />
+<link rel="icon" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/style.css" />
@@ -25,22 +26,48 @@
   .status-refunded { background: #eee; color: var(--muted); }
   .order-item-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--muted); padding: 4px 0; }
   .order-meta { font-size: 0.82rem; color: var(--muted); margin-top: 8px; }
+  .status-refund_requested { background: #fde3e0; color: #a04b00; }
   .addr-card { border: 1px solid var(--cream-dark); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
   #loginGate { text-align: center; padding: 80px 20px; }
+
+  .account-head { max-width: 1000px; margin: 34px auto 0; padding: 0 20px; }
+  .account-head h1 { font-size: 1.9rem; margin-bottom: 4px; }
+  .account-head p { color: var(--muted); margin: 0; font-size: 0.9rem; }
+  .stat-strip {
+    max-width: 1000px; margin: 22px auto 0; padding: 0 20px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .stat-tile {
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 18px 20px; border-left: 4px solid var(--gold);
+  }
+  .stat-tile b { display: block; font-family: var(--font-head); font-size: 1.5rem; color: var(--maroon-dark); line-height: 1.2; }
+  .stat-tile span { font-size: 0.76rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .account-wrap { margin-top: 26px; }
+  .card h3 { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .inline-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .order-payment-meta { font-size: 0.76rem; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--cream-dark); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .order-payment-meta code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.72rem; color: var(--ink); }
+  .empty-note { color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 860px) {
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .account-wrap { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
     <a href="/" class="brand">
-      <div class="brand-badge"><img src="/images/logo.svg" alt="Namita Ji logo" /></div>
+      <div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div>
       <div>
-        <div class="brand-name">Namita Ji</div>
+        <div class="brand-name">Namita Ji Sweet</div>
         <div class="brand-tag">Traditional Indian Snacks &amp; Food</div>
       </div>
     </a>
-    <nav class="main-nav"><a href="/">Home</a><a href="/shop.html">Shop</a><a href="/about.html">Our Story</a><a href="/contact.html">Contact</a></nav>
+    <nav class="main-nav" id="mainNav"><a href="/">Home</a><a href="/shop.html">Shop</a><a href="/about.html">Our Story</a><a href="/vision.html">Our Vision</a><a href="/contact.html">Contact</a></nav>
     <div class="header-actions">
       <div class="profile-wrap" id="profileWrap">
         <button class="icon-btn" id="profileBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><circle cx="12" cy="9.75" r="3.25"/><path d="M5.6 18.4c1.2-2.4 3.5-3.6 6.4-3.6s5.2 1.2 6.4 3.6"/></svg></button>
@@ -57,17 +84,36 @@
   <button class="btn btn-primary" id="gateLoginBtn">Log In / Sign Up</button>
 </div>
 
+<div id="accountHead" hidden>
+  <div class="account-head">
+    <h1>Hello, <span id="greetName">there</span></h1>
+    <p>Your orders, payments and saved details — all in one place.</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-tile"><b id="statSpent">₹0</b><span>Total Spent</span></div>
+    <div class="stat-tile"><b id="statOrders">0</b><span>Orders Placed</span></div>
+    <div class="stat-tile"><b id="statSince">—</b><span>Member Since</span></div>
+  </div>
+</div>
+
 <div class="account-wrap" id="accountWrap" hidden>
   <div class="account-nav">
     <a href="#details" class="nav-link active" data-tab="details">Account Details</a>
     <a href="#addresses" class="nav-link" data-tab="addresses">Addresses</a>
     <a href="#orders" class="nav-link" data-tab="orders">My Orders</a>
+    <a href="#security" class="nav-link" data-tab="security">Login &amp; Security</a>
   </div>
 
   <div>
     <div class="card tab-panel" id="tab-details">
       <h3>Account Details</h3>
-      <div id="detailsBody"></div>
+      <div class="form-error" id="detailsError"></div>
+      <form id="detailsForm">
+        <div class="field"><label for="pfName">Full Name</label><input type="text" id="pfName" autocomplete="name" required /></div>
+        <div class="field"><label for="pfEmail">Email</label><input type="email" id="pfEmail" disabled /></div>
+        <div class="field"><label for="pfPhone">Phone</label><input type="tel" id="pfPhone" autocomplete="tel" placeholder="10-digit mobile number" /></div>
+        <button type="submit" class="btn btn-maroon" id="detailsSubmit">Save Changes</button>
+      </form>
     </div>
 
     <div class="card tab-panel" id="tab-addresses" hidden>
@@ -87,8 +133,51 @@
 
     <div class="card tab-panel" id="tab-orders" hidden>
       <h3>My Orders</h3>
-      <div id="ordersList"><p style="color:var(--muted)">Loading orders…</p></div>
+      <div id="ordersList"><p class="empty-note">Loading orders…</p></div>
     </div>
+
+    <div class="card tab-panel" id="tab-security" hidden>
+      <h3>Change Password</h3>
+      <p class="empty-note" style="margin-top:0;margin-bottom:16px;">
+        Changing your password signs you out on every other device.
+      </p>
+      <div class="form-error" id="pwError"></div>
+      <form id="passwordForm">
+        <div class="field"><label for="pwCurrent">Current Password</label><input type="password" id="pwCurrent" autocomplete="current-password" required /></div>
+        <div class="field"><label for="pwNew">New Password</label><input type="password" id="pwNew" autocomplete="new-password" required /></div>
+        <div class="field"><label for="pwConfirm">Confirm New Password</label><input type="password" id="pwConfirm" autocomplete="new-password" required /></div>
+        <p class="empty-note" style="margin-top:-4px;">At least 8 characters, including letters and numbers.</p>
+        <button type="submit" class="btn btn-maroon" id="pwSubmit">Update Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Refund request modal -->
+<div class="modal-backdrop" id="refundBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="refundClose">✕</button>
+    <h2>Request a Refund</h2>
+    <p class="sub" id="refundOrderLabel">Tell us what went wrong.</p>
+    <div class="form-error" id="refundError"></div>
+    <form id="refundForm">
+      <div class="field">
+        <label for="refundReason">Reason</label>
+        <select id="refundReason">
+          <option>Item arrived damaged</option>
+          <option>Wrong item delivered</option>
+          <option>Order never arrived</option>
+          <option>Quality not as expected</option>
+          <option>Ordered by mistake</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="refundNote">Anything else we should know? (optional)</label>
+        <textarea id="refundNote" rows="3" maxlength="400"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="refundSubmit">Submit Request</button>
+    </form>
   </div>
 </div>
 
@@ -127,6 +216,7 @@
 <script src="/js/auth.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/profile.js"></script>
+<script src="/js/main.js"></script>
 <script src="/js/animations.js"></script>
 </body>
 </html>

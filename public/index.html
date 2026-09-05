@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Namita Ji — Traditional Indian Snacks & Food</title>
 <meta name="description" content="Authentic, home-style Bihari snacks and sweets — Thekua, Anarsa, Namkeen and more, made with love and shipped fresh." />
-<link rel="icon" href="/images/logo.svg" />
+<link rel="icon" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,8 +17,7 @@
 
 <div class="topbar">
   <div class="container">
-    <span class="trust-marquee"><span class="trust-track"><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span></span></span>
-    <span class="trust-marquee"><span class="trust-track"><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span></span></span>
+    <span class="trust-marquee"><span class="trust-track"><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span></span></span>
   </div>
 </div>
 
@@ -25,9 +25,9 @@
   <div class="header-inner">
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
     <a href="/" class="brand">
-      <div class="brand-badge"><img src="/images/logo.svg" alt="Namita Ji logo" /></div>
+      <div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div>
       <div>
-        <div class="brand-name">Namita Ji</div>
+        <div class="brand-name">Namita Ji Sweet</div>
         <div class="brand-tag">Traditional Indian Snacks &amp; Food</div>
       </div>
     </a>
@@ -36,10 +36,18 @@
       <a href="/" class="active">Home</a>
       <a href="/shop.html">Shop</a>
       <a href="/about.html">Our Story</a>
+      <a href="/vision.html">Our Vision</a>
       <a href="/contact.html">Contact</a>
     </nav>
 
     <div class="header-actions">
+      <form class="header-search" action="/shop.html" role="search">
+        <label class="sr-only" for="homeSearch">Search products</label>
+        <input id="homeSearch" name="search" type="search" placeholder="Search snacks & sweets" autocomplete="off" />
+        <button type="submit" aria-label="Search products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+        </button>
+      </form>
       <div class="profile-wrap" id="profileWrap">
         <button class="icon-btn" id="profileBtn" aria-label="Account">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><circle cx="12" cy="9.75" r="3.25"/><path d="M5.6 18.4c1.2-2.4 3.5-3.6 6.4-3.6s5.2 1.2 6.4 3.6"/></svg>
@@ -130,6 +138,22 @@
   </div>
 </section>
 
+<section class="madhubani-band">
+  <div class="container">
+    <div class="mb-card">
+      <div class="mb-inner">
+        <img class="mb-art" src="/images/madhubani-lotus.svg" alt="" aria-hidden="true" />
+        <div class="mb-copy">
+          <span class="mb-eyebrow">Mithila · Madhubani</span>
+          <h2>Made the way Madhubani is painted</h2>
+          <p>The same corner of Bihar that gave the world Madhubani painting gave us our recipes. Both are made slowly, entirely by hand, and handed down through the women of the family — no stencils, no shortcuts, no two exactly alike.</p>
+        </div>
+        <img class="mb-art" src="/images/madhubani-lotus.svg" alt="" aria-hidden="true" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="products" id="bestsellers">
   <div class="container">
     <h2 class="section-title">Our Bestsellers</h2>
@@ -143,6 +167,43 @@
   </div>
 </section>
 
+<section class="madhubani-band">
+  <div class="container">
+    <div class="mb-card">
+      <div class="mb-inner">
+        <img class="mb-art" src="/images/madhubani-fish.svg" alt="" aria-hidden="true" />
+        <div class="mb-copy">
+          <span class="mb-eyebrow">A Mithila Blessing</span>
+          <h2>A pair of fish, for a full home</h2>
+          <p>In Madhubani art two fish are painted facing each other as a wish for prosperity and a house that is never empty. We paint them here for every kitchen our boxes reach.</p>
+        </div>
+        <img class="mb-art" src="/images/madhubani-fish.svg" alt="" aria-hidden="true" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-reviews" aria-labelledby="videoReviewsTitle">
+  <div class="container">
+    <h2 class="section-title" id="videoReviewsTitle">Video Reviews from Our Customers</h2>
+    <p class="section-sub">Real moments, familiar flavours, and happy homes</p>
+    <div class="video-review-grid">
+      <article class="video-review-card">
+        <div class="video-frame"><div class="demo-video demo-thekua" role="img" aria-label="Animated ten-second demo of freshly made Thekua"><i class="demo-snack snack-a"></i><i class="demo-snack snack-b"></i><i class="demo-snack snack-c"></i><span class="demo-caption">Fresh from the kitchen</span></div><span class="video-label">10 sec demo</span></div>
+        <div class="video-review-copy"><div class="stars">★★★★★</div><h3>“Just like home-made Thekua.”</h3><p>Priya shares her first bite of our Chhath favourite.</p><span>Priya S. · Mumbai</span></div>
+      </article>
+      <article class="video-review-card">
+        <div class="video-frame"><div class="demo-video demo-mixture" role="img" aria-label="Animated ten-second demo of Namkeen Mixture being tossed"><i class="demo-bowl"></i><i class="demo-sprinkle sprinkle-a"></i><i class="demo-sprinkle sprinkle-b"></i><i class="demo-sprinkle sprinkle-c"></i><span class="demo-caption">A perfect chai-time crunch</span></div><span class="video-label">10 sec demo</span></div>
+        <div class="video-review-copy"><div class="stars">★★★★★</div><h3>“Our new chai-time favourite.”</h3><p>Ravi reviews the crunchy, tangy Namkeen Mixture.</p><span>Ravi K. · Delhi</span></div>
+      </article>
+      <article class="video-review-card">
+        <div class="video-frame"><div class="demo-video demo-anarsa" role="img" aria-label="Animated ten-second demo of sesame-coated Anarsa"><i class="demo-plate"></i><i class="demo-sweet sweet-a"></i><i class="demo-sweet sweet-b"></i><i class="demo-sweet sweet-c"></i><span class="demo-caption">Hand-finished with sesame</span></div><span class="video-label">10 sec demo</span></div>
+        <div class="video-review-copy"><div class="stars">★★★★★</div><h3>“So fresh and beautifully packed.”</h3><p>Anjali tastes the sesame-coated Anarsa with her family.</p><span>Anjali M. · Bengaluru</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="testimonials">
   <div class="container">
     <h2 class="section-title">What Our Customers Say</h2>
@@ -152,6 +213,10 @@
       <div class="t-card"><div class="stars">★★★★★</div><p>"Finally a brand that doesn't compromise on taste for shelf life. Highly recommend!"</p><div class="t-foot"><div class="t-avatar">A</div><div><div class="t-name">Anjali M.</div><div class="t-city">Bengaluru</div></div></div></div>
     </div>
   </div>
+    <div class="review-cta">
+      <div><h3>Enjoyed your Namita Ji favourite?</h3><p>Choose a product and share your experience with other food lovers.</p></div>
+      <a class="btn btn-maroon" href="/shop.html">Write a Review</a>
+    </div>
 </section>
 
 <section class="faq">
@@ -201,6 +266,7 @@
       <h4>Company</h4>
       <ul>
         <li><a href="/about.html">Our Story</a></li>
+        <li><a href="/vision.html">Our Vision</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/profile.html">My Account</a></li>
       </ul>
@@ -291,6 +357,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="/js/hero.js"></script>
 <script src="/js/api.js"></script>
+<script src="/js/products-data.js"></script>
 <script src="/js/auth.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/bestsellers.js"></script>

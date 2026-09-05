@@ -7,7 +7,10 @@ const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const rateLimit = require('express-rate-limit');
 
+const mongoose = require('mongoose');
+
 const connectDB = require('./config/db');
+const { attachUser } = require('./middleware/auth');
 
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
@@ -51,11 +54,18 @@ app.use(mongoSanitize());
 const apiLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 300 });
 app.use('/api', apiLimiter);
 
+app.get('/api/health', (req, res) => {
+  const states = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+  res.json({ ok: true, db: states[mongoose.connection.readyState] || 'unknown', time: new Date().toISOString() });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/products', reviewRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/donations', donationRoutes);
+// Donations are open to guests, but a signed-in donor gets the payment linked to
+// their account — attachUser populates req.user when a token is present, never blocks.
+app.use('/api/donations', attachUser, donationRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -66,6 +76,10 @@ app.get('/admin', (req, res) => {
 
 app.get('*', (req, res) => {
   if (req.path.startsWith('/api')) return res.status(404).json({ error: 'Not found' });
+  // A request with a file extension is asking for a static asset. If express.static
+  // didn't serve it, it doesn't exist — 404 rather than falling through to the
+  // homepage, or a stale <script src> would receive HTML and fail to parse.
+  if (path.extname(req.path)) return res.status(404).type('txt').send('Not found');
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 

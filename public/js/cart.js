@@ -15,6 +15,7 @@ const Cart = (() => {
   function save() {
     localStorage.setItem(KEY, JSON.stringify(items));
     updateBadge();
+    document.dispatchEvent(new CustomEvent('cart:updated'));
   }
 
   function add(product, qty = 1) {
@@ -73,12 +74,17 @@ const Cart = (() => {
     return items.reduce((s, i) => s + i.quantity, 0);
   }
 
+  function quantity(productId) {
+    return items.find((i) => i.productId === productId)?.quantity || 0;
+  }
+
   function updateBadge() {
     const badge = document.getElementById('cartBadge');
     if (!badge) return;
     const c = count();
     badge.textContent = c;
     badge.hidden = c === 0;
+    document.getElementById('cartBtn')?.setAttribute('aria-label', c ? `Cart, ${c} item${c === 1 ? '' : 's'}` : 'Cart');
   }
 
   function render() {
@@ -150,7 +156,7 @@ const Cart = (() => {
     render();
   }
 
-  return { add, updateQty, remove, clear, items: () => items, itemsTotal, shippingFee, grandTotal, count, openDrawer, closeDrawer, init, render };
+  return { add, updateQty, remove, clear, items: () => items, itemsTotal, shippingFee, grandTotal, count, quantity, openDrawer, closeDrawer, init, render };
 })();
 
 document.addEventListener('DOMContentLoaded', Cart.init);

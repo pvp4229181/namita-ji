@@ -30,7 +30,11 @@ const userSchema = new mongoose.Schema(
     passwordHash: { type: String, required: true },
     role: { type: String, enum: ['customer', 'admin'], default: 'customer' },
     addresses: [addressSchema],
-    isActive: { type: Boolean, default: true }
+    isActive: { type: Boolean, default: true },
+    // Sessions issued before this moment are rejected, so changing the password
+    // really does sign the account out everywhere. See middleware/auth.js.
+    passwordChangedAt: { type: Date },
+    lastLoginAt: { type: Date }
   },
   { timestamps: true }
 );
@@ -38,6 +42,7 @@ const userSchema = new mongoose.Schema(
 userSchema.methods.setPassword = async function (plainPassword) {
   const salt = await bcrypt.genSalt(12);
   this.passwordHash = await bcrypt.hash(plainPassword, salt);
+  if (!this.isNew) this.passwordChangedAt = new Date();
 };
 
 userSchema.methods.comparePassword = function (plainPassword) {

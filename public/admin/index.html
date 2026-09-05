@@ -4,10 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Admin Dashboard — Namita Ji</title>
-<link rel="icon" href="/images/logo.svg" />
+<link rel="icon" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --maroon:#7a1e2b; --maroon-dark:#5c1520; --gold:#f4b942; --gold-dark:#d99a1f; --cream:#fbf6ec; --cream-dark:#f2e8d5; --ink:#2a1a1a; --muted:#7a6a63; --success:#2e7d4f; --danger:#c0392b; }
+  :root { --maroon:#681010; --maroon-dark:#4a0a0a; --gold:#f0c040; --gold-dark:#cf9f26; --cream:#f8f7f0; --cream-dark:#eae6d9; --ink:#2a1a1a; --muted:#7a6a63; --success:#2e7d4f; --danger:#c0392b; }
   * { box-sizing: border-box; }
   body { margin:0; font-family:'Poppins',sans-serif; background:var(--cream); color:var(--ink); }
   h1,h2,h3 { font-family:'Playfair Display',serif; color:var(--maroon-dark); }
@@ -17,13 +18,13 @@
   header button { background:var(--gold); border:none; padding:8px 16px; border-radius:999px; font-weight:600; cursor:pointer; color:var(--maroon-dark); }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
   .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
-  .stat-card { background:#fff; border-radius:14px; padding:20px; box-shadow:0 6px 20px rgba(90,20,30,0.08); }
+  .stat-card { background:#fff; border-radius:14px; padding:20px; box-shadow:0 6px 20px rgba(104,16,16,0.08); }
   .stat-card b { display:block; font-size:1.6rem; color:var(--maroon); }
   .stat-card span { font-size:0.8rem; color:var(--muted); }
   .tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
   .tabs button { padding:10px 18px; border-radius:999px; border:1.5px solid var(--maroon); background:#fff; color:var(--maroon); font-weight:600; cursor:pointer; }
   .tabs button.active { background:var(--maroon); color:#fff; }
-  table { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 6px 20px rgba(90,20,30,0.08); }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 6px 20px rgba(104,16,16,0.08); }
   th, td { padding:12px 14px; text-align:left; font-size:0.85rem; border-bottom:1px solid var(--cream-dark); }
   th { background:var(--cream-dark); color:var(--maroon-dark); }
   .badge { padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:700; }
@@ -33,11 +34,25 @@
   .actions button { padding:6px 10px; border-radius:6px; border:none; font-size:0.75rem; cursor:pointer; margin-right:4px; }
   .btn-approve { background:var(--success); color:#fff; }
   .btn-reject { background:var(--danger); color:#fff; }
-  #loginScreen { max-width:380px; margin:100px auto; background:#fff; padding:30px; border-radius:14px; box-shadow:0 6px 20px rgba(90,20,30,0.1); }
+  #loginScreen { max-width:380px; margin:100px auto; background:#fff; padding:30px; border-radius:14px; box-shadow:0 6px 20px rgba(104,16,16,0.1); }
   #loginScreen input { width:100%; padding:11px 14px; margin-bottom:12px; border-radius:8px; border:1.5px solid var(--cream-dark); }
   #loginScreen button { width:100%; padding:12px; border-radius:8px; border:none; background:var(--maroon); color:#fff; font-weight:600; cursor:pointer; }
   #loginError { color:var(--danger); font-size:0.85rem; min-height:1em; margin-bottom:8px; }
   .table-scroll { overflow-x:auto; }
+  @media (max-width: 700px) {
+    header { padding:12px 16px; gap:12px; align-items:flex-start; }
+    header .brand { font-size:.9rem; }
+    header img { height:32px; width:32px; }
+    header button { padding:7px 11px; font-size:.78rem; }
+    .wrap { padding:16px; }
+    .stats { grid-template-columns:1fr 1fr; gap:10px; }
+    .stat-card { padding:15px; }
+    .tabs { flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; }
+    .tabs button { flex:0 0 auto; padding:8px 13px; font-size:.78rem; }
+    th, td { padding:10px; white-space:nowrap; }
+    #loginScreen { margin:48px 16px; padding:22px; }
+  }
+  @media (max-width: 390px) { .stats { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -52,7 +67,7 @@
 
 <div id="dashboard" hidden>
   <header>
-    <div class="brand"><img src="/images/logo.svg" alt="Namita Ji" /> Namita Ji — Admin</div>
+    <div class="brand"><img src="/images/logo.png" alt="Namita Ji" /> Namita Ji — Admin</div>
     <button id="logoutBtn">Log Out</button>
   </header>
   <div class="wrap">
@@ -60,7 +75,6 @@
     <div class="tabs">
       <button class="tab-btn active" data-tab="orders">Orders</button>
       <button class="tab-btn" data-tab="refunds">Refund Requests</button>
-      <button class="tab-btn" data-tab="donations">Donations</button>
       <button class="tab-btn" data-tab="users">Users</button>
       <button class="tab-btn" data-tab="logs">Payment Logs</button>
     </div>
@@ -68,141 +82,6 @@
   </div>
 </div>
 
-<script>
-const API_BASE = '/api';
-function token() { return localStorage.getItem('nj_admin_token'); }
-async function api(path, opts = {}) {
-  const headers = { 'Content-Type': 'application/json' };
-  if (token()) headers.Authorization = 'Bearer ' + token();
-  const res = await fetch(API_BASE + path, { method: opts.method || 'GET', headers, body: opts.body ? JSON.stringify(opts.body) : undefined });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Request failed');
-  return data;
-}
-function inr(n) { return '₹' + Number(n).toLocaleString('en-IN'); }
-function esc(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
-
-async function login() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value;
-  const errEl = document.getElementById('loginError');
-  errEl.textContent = '';
-  try {
-    const data = await api('/auth/login', { method: 'POST', body: { email, password } });
-    if (data.user.role !== 'admin') { errEl.textContent = 'This account is not an admin.'; return; }
-    localStorage.setItem('nj_admin_token', data.token);
-    showDashboard();
-  } catch (err) {
-    errEl.textContent = err.message;
-  }
-}
-
-function logout() {
-  localStorage.removeItem('nj_admin_token');
-  document.getElementById('dashboard').hidden = true;
-  document.getElementById('loginScreen').hidden = false;
-}
-
-async function loadStats() {
-  const s = await api('/admin/summary');
-  document.getElementById('statsRow').innerHTML = `
-    <div class="stat-card"><b>${inr(s.totalRevenue)}</b><span>Total Revenue</span></div>
-    <div class="stat-card"><b>${inr(s.orderRevenue)}</b><span>Order Revenue</span></div>
-    <div class="stat-card"><b>${inr(s.donationRevenue)}</b><span>Donation Revenue</span></div>
-    <div class="stat-card"><b>${s.orderCount}</b><span>Total Orders</span></div>
-    <div class="stat-card"><b>${s.userCount}</b><span>Registered Users</span></div>
-    <div class="stat-card"><b>${s.pendingRefunds}</b><span>Pending Refunds</span></div>
-  `;
-}
-
-async function loadTab(tab) {
-  const content = document.getElementById('tabContent');
-  content.innerHTML = '<p>Loading…</p>';
-  if (tab === 'orders' || tab === 'refunds') {
-    const { orders } = await api(tab === 'refunds' ? '/admin/orders?status=refund_requested' : '/admin/orders');
-    content.innerHTML = `
-      <table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th><th>Date</th>${tab === 'refunds' ? '<th>Action</th>' : ''}</tr></thead>
-      <tbody>${orders.map(o => `
-        <tr>
-          <td>#${o._id.slice(-8).toUpperCase()}</td>
-          <td>${esc(o.user?.name)}<br/><span style="color:var(--muted)">${esc(o.user?.email)}</span></td>
-          <td>${o.items.map(i => esc(i.name) + ' x' + i.quantity).join('<br/>')}</td>
-          <td>${inr(o.amount)}</td>
-          <td><span class="badge b-${o.status}">${o.status.replace('_',' ')}</span></td>
-          <td>${new Date(o.createdAt).toLocaleString('en-IN')}</td>
-          ${tab === 'refunds' ? `<td class="actions">
-            <button class="btn-approve" onclick="approveRefund('${o._id}')">Approve</button>
-            <button class="btn-reject" onclick="rejectRefund('${o._id}')">Reject</button>
-          </td>` : ''}
-        </tr>`).join('')}</tbody></table>`;
-  } else if (tab === 'donations') {
-    const { donations } = await api('/admin/donations');
-    content.innerHTML = `
-      <table><thead><tr><th>Name</th><th>Email</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
-      <tbody>${donations.map(d => `
-        <tr><td>${esc(d.name)}</td><td>${esc(d.email)}</td><td>${inr(d.amount)}</td>
-        <td><span class="badge b-${d.status}">${d.status}</span></td>
-        <td>${new Date(d.createdAt).toLocaleString('en-IN')}</td></tr>`).join('')}</tbody></table>`;
-  } else if (tab === 'users') {
-    const { users } = await api('/admin/users');
-    content.innerHTML = `
-      <table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
-      <tbody>${users.map(u => `
-        <tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc(u.phone)}</td>
-        <td>${new Date(u.createdAt).toLocaleDateString('en-IN')}</td></tr>`).join('')}</tbody></table>`;
-  } else if (tab === 'logs') {
-    const { logs } = await api('/admin/payment-logs');
-    content.innerHTML = `
-      <table><thead><tr><th>Type</th><th>Ref</th><th>Amount</th><th>Razorpay Order</th><th>Time</th></tr></thead>
-      <tbody>${logs.map(l => `
-        <tr><td>${esc(l.type)}</td><td>${esc(l.refModel)}</td><td>${l.amount ? inr(l.amount) : '—'}</td>
-        <td style="font-size:0.72rem">${esc(l.razorpayOrderId)}</td>
-        <td>${new Date(l.createdAt).toLocaleString('en-IN')}</td></tr>`).join('')}</tbody></table>`;
-  }
-}
-
-async function approveRefund(orderId) {
-  if (!confirm('Process this refund via Razorpay? This will actually transfer money back to the customer.')) return;
-  try {
-    await api(`/admin/orders/${orderId}/refund`, { method: 'POST', body: {} });
-    alert('Refund processed successfully.');
-    loadTab('refunds');
-    loadStats();
-  } catch (err) {
-    alert('Refund failed: ' + err.message);
-  }
-}
-
-async function rejectRefund(orderId) {
-  const note = prompt('Reason for rejecting this refund request:') || '';
-  try {
-    await api(`/admin/orders/${orderId}/reject-refund`, { method: 'POST', body: { note } });
-    loadTab('refunds');
-  } catch (err) {
-    alert(err.message);
-  }
-}
-
-function showDashboard() {
-  document.getElementById('loginScreen').hidden = true;
-  document.getElementById('dashboard').hidden = false;
-  loadStats();
-  loadTab('orders');
-}
-
-document.getElementById('loginBtn').onclick = login;
-document.getElementById('logoutBtn').onclick = logout;
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    loadTab(btn.dataset.tab);
-  };
-});
-
-if (token()) {
-  api('/admin/summary').then(showDashboard).catch(logout);
-}
-</script>
+<script src="/admin/admin.js"></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>overflow probe</title></head>
+<body>
+<iframe id="f" src="/" style="position:absolute;top:0;left:0;width:390px;height:900px;border:0;visibility:hidden"></iframe>
+<pre id="out" style="position:relative;z-index:9;background:#fff;color:#000;font:14px/1.5 monospace;margin:0;padding:12px">pending</pre>
+<script src="/js/__overflow.js"></script>
+<script type="application/x-disabled">
+const f = document.getElementById('f');
+// Not tied to the iframe's load event: the homepage hotlinks external images, so
+// `load` may never fire under a virtual-time budget.
+{
+  setTimeout(() => {
+    const d = f.contentDocument, w = f.contentWindow;
+    const vw = d.documentElement.clientWidth;
+    const lines = ['viewport=' + vw + ' scrollWidth=' + d.documentElement.scrollWidth +
+                   ' bodyScrollWidth=' + d.body.scrollWidth];
+    const hits = [];
+    d.querySelectorAll('*').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 && r.height === 0) return;
+      if (r.right > vw + 1 || r.left < -1) {
+        // only report the shallowest offenders, not every descendant
+        hits.push({
+          el,
+          depth: (function(n){let c=0;while(n.parentElement){c++;n=n.parentElement}return c})(el),
+          desc: el.tagName.toLowerCase() +
+                (el.id ? '#' + el.id : '') +
+                (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : ''),
+          left: Math.round(r.left), right: Math.round(r.right), width: Math.round(r.width)
+        });
+      }
+    });
+    hits.sort((a,b) => a.depth - b.depth);
+    const seen = new Set();
+    hits.slice(0, 400).forEach(h => {
+      const key = h.desc + '|' + h.width;
+      if (seen.has(key)) return;
+      seen.add(key);
+      if (seen.size <= 30) lines.push(`  ${h.desc}  left=${h.left} right=${h.right} w=${h.width}`);
+    });
+    document.getElementById('out').textContent = lines.join('\n');
+  }, 1500);
+}
+</script>
+</body></html>

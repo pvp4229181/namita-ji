@@ -51,12 +51,26 @@ const Auth = (() => {
   }
 
   function logout() {
-    localStorage.removeItem('nj_token');
-    localStorage.removeItem('nj_user');
+    clearSession();
     currentUser = null;
     renderProfileMenu();
     showToast('Logged out', 'success');
     if (location.pathname !== '/') location.href = '/';
+  }
+
+  // The cached user in localStorage can outlive the JWT. Re-checking it against the
+  // server on load means an expired session shows as logged out instead of failing
+  // halfway through a checkout.
+  async function refreshSession() {
+    if (!authToken()) return;
+    try {
+      const { user } = await api('/auth/me', { auth: true });
+      currentUser = user;
+      localStorage.setItem('nj_user', JSON.stringify(user));
+    } catch (err) {
+      if (err.status === 401) currentUser = null;
+    }
+    renderProfileMenu();
   }
 
   function renderProfileMenu() {
@@ -138,9 +152,10 @@ const Auth = (() => {
     });
 
     renderProfileMenu();
+    refreshSession();
   }
 
-  return { init, open, close, isLoggedIn, getUser, logout, renderProfileMenu };
+  return { init, open, close, isLoggedIn, getUser, logout, renderProfileMenu, refreshSession, persist };
 })();
 
 document.addEventListener('DOMContentLoaded', Auth.init);

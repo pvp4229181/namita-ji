@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title id="pageTitle">Product — Namita Ji</title>
-<link rel="icon" href="/images/logo.svg" />
+<link rel="icon" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -43,7 +44,7 @@
   .star-input { display:flex; gap:6px; font-size:1.6rem; cursor:pointer; margin-bottom: 14px; }
   .star-input span { color: var(--cream-dark); transition: color 0.15s; }
   .star-input span.filled { color: var(--gold); }
-  .review-card { background: var(--white); border-radius: 14px; box-shadow: 0 4px 14px rgba(90,20,30,0.06); padding: 20px; border:1px solid var(--cream-dark); margin-bottom: 14px; }
+  .review-card { background: var(--white); border-radius: 14px; box-shadow: 0 4px 14px rgba(104,16,16,0.06); padding: 20px; border:1px solid var(--cream-dark); margin-bottom: 14px; }
   .review-card .rhead { display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px; }
   .review-card .rname { font-weight: 700; color: var(--maroon-dark); }
   .review-card .rdate { font-size: 0.78rem; color: var(--muted); }
@@ -56,8 +57,7 @@
 
 <div class="topbar">
   <div class="container">
-    <span class="trust-marquee"><span class="trust-track"><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span></span></span>
-    <span class="trust-marquee"><span class="trust-track"><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span></span></span>
+    <span class="trust-marquee"><span class="trust-track"><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span><span>📞 +91 6207227094</span><span>✉️ hello@namitaji.com</span><span>🚚 Free delivery above ₹499</span><span>🏅 Made Fresh Daily</span><span>📦 Pan-India Shipping</span></span></span>
   </div>
 </div>
 
@@ -65,9 +65,9 @@
   <div class="header-inner">
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
     <a href="/" class="brand">
-      <div class="brand-badge"><img src="/images/logo.svg" alt="Namita Ji logo" /></div>
+      <div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div>
       <div>
-        <div class="brand-name">Namita Ji</div>
+        <div class="brand-name">Namita Ji Sweet</div>
         <div class="brand-tag">Traditional Indian Snacks &amp; Food</div>
       </div>
     </a>
@@ -75,6 +75,7 @@
       <a href="/">Home</a>
       <a href="/shop.html" class="active">Shop</a>
       <a href="/about.html">Our Story</a>
+      <a href="/vision.html">Our Vision</a>
       <a href="/contact.html">Contact</a>
     </nav>
     <div class="header-actions">
@@ -133,6 +134,7 @@
       <h4>Company</h4>
       <ul>
         <li><a href="/about.html">Our Story</a></li>
+        <li><a href="/vision.html">Our Vision</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/profile.html">My Account</a></li>
       </ul>
@@ -201,6 +203,7 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="/js/api.js"></script>
+<script src="/js/products-data.js"></script>
 <script src="/js/auth.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/checkout.js"></script>

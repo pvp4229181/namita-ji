@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Vision | Namita Ji</title>
+<meta name="description" content="Discover Namita Ji's vision to share the warmth of traditional Bihari food with homes across India." />
+<link rel="icon" href="/images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .vision-hero { padding:84px 20px; text-align:center; color:var(--white); background:linear-gradient(120deg,var(--maroon-dark),var(--maroon)); }
+  .vision-hero h1 { color:var(--white); font-size:clamp(2.4rem,5vw,4.2rem); margin:10px auto 14px; max-width:760px; }
+  .vision-hero h1 span { color:var(--gold); } .vision-hero p { color:var(--cream-dark); max-width:670px; margin:auto; }
+  .vision-hero .feature-tag { color:var(--gold); background:rgba(255,255,255,.08); border-color:rgba(240,192,64,.45); }
+  .vision-story { display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:center; padding:74px 0; }
+  .vision-art { min-height:330px; display:grid; place-items:center; padding:38px; border-radius:var(--radius); background:var(--white) url('/images/madhubani-border.svg') repeat-x bottom / auto 28px; box-shadow:var(--shadow); }
+  .vision-art img { width:min(245px,80%); } .vision-copy p { color:var(--muted); line-height:1.8; }
+  .vision-values { padding:74px 0; background:var(--white); border-top:1px solid var(--cream-dark); border-bottom:1px solid var(--cream-dark); }
+  .vision-intro { max-width:740px; text-align:center; margin:0 auto 36px; } .vision-intro p { color:var(--muted); }
+  .value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .value-card { padding:28px; border:1px solid var(--cream-dark); border-radius:var(--radius); background:var(--cream); }
+  .value-card b { display:block; margin-bottom:16px; color:var(--gold-dark); font-size:.78rem; letter-spacing:.14em; } .value-card h3 { font-size:1.3rem; } .value-card p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.7; }
+  .vision-promise { padding:60px 0; text-align:center; background:var(--maroon-dark); } .vision-promise h2 { color:var(--white); margin:10px auto; max-width:700px; } .vision-promise p { color:var(--cream-dark); max-width:620px; margin:auto; }
+  @media (max-width:760px) { .vision-story,.value-grid { grid-template-columns:1fr; } .vision-story { gap:30px; padding:56px 0; } .vision-values { padding:56px 0; } .vision-art { min-height:240px; } }
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
+  <a href="/" class="brand"><div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div><span class="brand-name">Namita Ji Sweet</span></a>
+  <nav class="main-nav" id="mainNav"><a href="/">Home</a><a href="/shop.html">Shop</a><a href="/about.html">Our Story</a><a href="/vision.html" class="active">Our Vision</a><a href="/contact.html">Contact</a></nav>
+</div></header>
+<main>
+  <section class="vision-hero"><div class="container"><span class="feature-tag">Our Vision</span><h1>Food that carries <span>the feeling of home.</span></h1><p>We want the warmth of Bihar's family kitchens to reach every table—through recipes made with care, familiar flavours and the joy of sharing.</p></div></section>
+  <section><div class="container vision-story"><div class="vision-art"><img src="/images/logo.png" alt="Namita Ji" /></div><div class="vision-copy"><span class="feature-tag">Our story</span><h2>Rooted in Bihar, made for every table.</h2><p>Namita Ji is inspired by the kitchens where food is made patiently and shared generously. From Thekua prepared for Chhath to a tin of namkeen beside evening chai, these recipes hold memories as much as flavour.</p><p>We celebrate traditional Bihari snacks so that people who grew up with them can reconnect with a familiar taste, and people discovering them for the first time can feel warmly welcomed.</p></div></div></section>
+  <section class="vision-values"><div class="container"><div class="vision-intro"><span class="feature-tag">What guides us</span><h2>Tradition, care and connection.</h2><p>Our vision is to make regional food traditions easy to discover and joyful to share, while respecting the stories and care that make them special.</p></div><div class="value-grid"><article class="value-card"><b>01</b><h3>Honour tradition</h3><p>We celebrate recipes passed from one generation to the next and the small details that make every snack distinctive.</p></article><article class="value-card"><b>02</b><h3>Choose care</h3><p>We believe good food begins with thoughtful preparation, familiar ingredients and attention at every stage.</p></article><article class="value-card"><b>03</b><h3>Share warmth</h3><p>Whether these flavours are part of your childhood or a new discovery, every order should feel welcoming.</p></article></div></div></section>
+  <section class="vision-promise"><div class="container"><span class="feature-tag">Our promise</span><h2>Made with respect for where every recipe comes from.</h2><p>As Namita Ji grows, we will keep the spirit of the family kitchen at the centre of everything we share.</p></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div><h4>Namita Ji</h4><p>Traditional Indian snacks &amp; food, made with love in Bihar and shipped fresh across India.</p></div><div><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/shop.html">Shop</a></li><li><a href="/about.html">Our Story</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/vision.html">Our Vision</a></li><li><a href="/contact.html">Contact Us</a></li></ul></div></div><div class="footer-bottom container">© <span id="year"></span> Namita Ji. All rights reserved.</div></footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear(); document.getElementById('hamburgerBtn').onclick = () => document.getElementById('mainNav').classList.toggle('open');</script>
+</body>
+</html>

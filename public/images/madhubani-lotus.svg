@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="Madhubani lotus motif">
+  <!-- Kamal (lotus): eight outer petals, eight shorter petals offset between them,
+       and a hatched seed head — the standard Mithila construction. -->
+  <defs>
+    <path id="mb-petal" d="M70 15c-9.5 14-9.5 29 0 41 9.5-12 9.5-27 0-41z"/>
+    <path id="mb-petal-inner" d="M70 27c-5 8.5-5 17 0 24 5-7 5-15.5 0-24z"/>
+    <path id="mb-rib" d="M70 22v30"/>
+  </defs>
+
+  <g fill="none" stroke="#f0c040" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <g>
+      <use href="#mb-petal" transform="rotate(0 70 70)"/>
+      <use href="#mb-petal" transform="rotate(45 70 70)"/>
+      <use href="#mb-petal" transform="rotate(90 70 70)"/>
+      <use href="#mb-petal" transform="rotate(135 70 70)"/>
+      <use href="#mb-petal" transform="rotate(180 70 70)"/>
+      <use href="#mb-petal" transform="rotate(225 70 70)"/>
+      <use href="#mb-petal" transform="rotate(270 70 70)"/>
+      <use href="#mb-petal" transform="rotate(315 70 70)"/>
+    </g>
+
+    <g stroke-width="1.4" opacity="0.75">
+      <use href="#mb-rib" transform="rotate(0 70 70)"/>
+      <use href="#mb-rib" transform="rotate(45 70 70)"/>
+      <use href="#mb-rib" transform="rotate(90 70 70)"/>
+      <use href="#mb-rib" transform="rotate(135 70 70)"/>
+      <use href="#mb-rib" transform="rotate(180 70 70)"/>
+      <use href="#mb-rib" transform="rotate(225 70 70)"/>
+      <use href="#mb-rib" transform="rotate(270 70 70)"/>
+      <use href="#mb-rib" transform="rotate(315 70 70)"/>
+    </g>
+
+    <g stroke-width="1.7" opacity="0.9">
+      <use href="#mb-petal-inner" transform="rotate(22.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(67.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(112.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(157.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(202.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(247.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(292.5 70 70)"/>
+      <use href="#mb-petal-inner" transform="rotate(337.5 70 70)"/>
+    </g>
+
+    <circle cx="70" cy="70" r="13"/>
+    <circle cx="70" cy="70" r="8"/>
+  </g>
+
+  <g fill="#f0c040">
+    <circle cx="70" cy="70" r="2.8"/>
+    <circle cx="70" cy="63.5" r="1.2"/>
+    <circle cx="76.5" cy="70" r="1.2"/>
+    <circle cx="70" cy="76.5" r="1.2"/>
+    <circle cx="63.5" cy="70" r="1.2"/>
+  </g>
+</svg>

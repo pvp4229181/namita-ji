@@ -22,7 +22,9 @@ async function loadProduct() {
   }
 
   try {
-    const { product } = await api(`/products/${encodeURIComponent(slug)}`);
+    const { product } = USE_STATIC_PRODUCTS
+      ? await ProductsAPI.get(slug)
+      : await api(`/products/${encodeURIComponent(slug)}`);
     currentProduct = product;
     renderProduct(product);
     loadReviews(slug);

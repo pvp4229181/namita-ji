@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="Madhubani paired fish motif">
+  <!-- Machh (paired fish): in Mithila painting a pair of fish is drawn for
+       prosperity and a full household. Body filled with arc "scales", the way
+       Madhubani leaves no surface empty. -->
+  <defs>
+    <g id="mb-fish">
+      <path d="M8 35c14-20 46-20 60 0-14 20-46 20-60 0z"/>
+      <path d="M68 35 88 22v26z"/>
+      <path d="M74 35h8"/>
+      <path d="M20 24a15 15 0 0 0 0 22"/>
+      <path d="M31 21a18 18 0 0 0 0 28"/>
+      <path d="M42 20a19 19 0 0 0 0 30"/>
+      <path d="M36 20c5-8 13-9 18-4"/>
+      <path d="M36 50c5 8 13 9 18 4"/>
+      <circle cx="56" cy="31" r="3.6"/>
+    </g>
+  </defs>
+
+  <g fill="none" stroke="#f0c040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+     transform="translate(70 70) scale(1.1) translate(-70 -70)">
+    <use href="#mb-fish" transform="translate(20 8)"/>
+    <!-- second fish mirrored and offset, facing the first -->
+    <use href="#mb-fish" transform="translate(122 72) scale(-1 1)"/>
+
+    <!-- water lines between them, a common Mithila filler -->
+    <g stroke-width="1.4" opacity="0.7">
+      <path d="M26 74c6-5 12-5 18 0s12 5 18 0 12-5 18 0 12 5 18 0"/>
+      <path d="M26 80c6-5 12-5 18 0s12 5 18 0 12-5 18 0 12 5 18 0"/>
+    </g>
+  </g>
+
+  <g fill="#f0c040">
+    <circle cx="76" cy="43" r="1.5"/>
+    <circle cx="64" cy="113" r="1.5"/>
+    <circle cx="20" cy="100" r="1.6"/>
+    <circle cx="118" cy="34" r="1.6"/>
+  </g>
+</svg>
