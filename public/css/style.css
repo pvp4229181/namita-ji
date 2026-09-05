@@ -519,13 +519,6 @@ footer.site-footer { background: var(--maroon-dark); color: var(--cream); paddin
   font-size: 0.76rem; font-weight: 700; color: var(--muted);
 }
 .pw-toggle-btn:hover { color: var(--maroon); }
-
-.link-btn {
-  display: block; background: none; border: none; padding: 0; margin: 6px 0 4px;
-  color: var(--maroon); font-weight: 700; font-size: 0.78rem; cursor: pointer;
-}
-.link-btn:hover { text-decoration: underline; }
-#authVerifyStep input { text-align: center; letter-spacing: 6px; font-size: 1.1rem; }
 .form-toggle { text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--muted); }
 .form-toggle button { background: none; border: none; color: var(--maroon); font-weight: 700; }
 
