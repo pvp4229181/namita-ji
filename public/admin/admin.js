@@ -34,6 +34,16 @@ function logout() {
 
 function dt(v) { return v ? new Date(v).toLocaleString('en-IN', { day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit' }) : '—'; }
 
+function verificationBadge(v) {
+  // Accounts created before this feature have no `verification` object at all.
+  if (!v) return '<span style="color:var(--muted)">—</span>';
+  const emailOk = !!v.email?.verified;
+  const phoneOk = !!v.phone?.verified;
+  if (emailOk && phoneOk) return '<span style="color:var(--success)">Verified</span>';
+  const pending = [!emailOk && 'email', !phoneOk && 'phone'].filter(Boolean).join(' + ');
+  return `<span style="color:var(--danger)">Pending (${pending})</span>`;
+}
+
 function welcomeEmailBadge(w) {
   const status = w?.status || 'pending';
   if (status === 'sent') return `<span style="color:var(--success)">Sent</span><br/><span style="color:var(--muted);font-size:0.7rem">${dt(w.sentAt)}</span>`;
@@ -101,14 +111,15 @@ async function loadTab(tab) {
       // Biggest spenders first — this is the "who actually paid" view.
       users.sort((a, b) => (b.totalSpent || 0) - (a.totalSpent || 0));
       content.innerHTML = `
-        <table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th><th>Total Spent</th><th>Last Order</th><th>Joined</th><th>Welcome Email</th></tr></thead>
+        <table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th><th>Total Spent</th><th>Last Order</th><th>Joined</th><th>Welcome Email</th><th>Verified</th></tr></thead>
         <tbody>${users.map(u => `
           <tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc(u.phone) || '—'}</td>
           <td>${u.orderCount || 0}</td>
           <td><b style="color:${u.totalSpent ? 'var(--success)' : 'var(--muted)'}">${inr(u.totalSpent || 0)}</b></td>
           <td>${dt(u.lastOrderAt)}</td>
           <td>${new Date(u.createdAt).toLocaleDateString('en-IN')}</td>
-          <td>${welcomeEmailBadge(u.welcomeEmail)}</td></tr>`).join('')}</tbody></table>`;
+          <td>${welcomeEmailBadge(u.welcomeEmail)}</td>
+          <td>${verificationBadge(u.verification)}</td></tr>`).join('')}</tbody></table>`;
     } else if (tab === 'logs') {
       const { logs } = await api('/admin/payment-logs');
       const alarming = ['verify_failure','amount_mismatch','webhook_signature_invalid','refund_failed','stock_shortfall','webhook_error'];

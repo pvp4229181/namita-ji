@@ -49,4 +49,25 @@ async function sendWelcomeEmail(user) {
   });
 }
 
-module.exports = { sendWelcomeEmail };
+async function sendOtpEmail(user, code) {
+  const t = getTransporter();
+  if (!t) throw transporterError;
+
+  const name = escapeHtml(user.name || 'there');
+  await t.sendMail({
+    from: process.env.SMTP_FROM || process.env.SMTP_USER,
+    to: user.email,
+    subject: `${code} is your Namita Ji verification code`,
+    html: `
+      <div style="font-family:Georgia,serif;max-width:480px;margin:0 auto;color:#3a2a24">
+        <h2 style="color:#681010">Verify your email</h2>
+        <p>Hi ${name}, here's your verification code:</p>
+        <p style="font-size:1.8rem;font-weight:bold;letter-spacing:6px;color:#681010">${code}</p>
+        <p style="color:#7a6a63;font-size:0.85rem">This code expires in 10 minutes. If you didn't request this, you can ignore this email.</p>
+      </div>
+    `,
+    text: `Hi ${user.name || 'there'}, your Namita Ji verification code is ${code}. It expires in 10 minutes.`
+  });
+}
+
+module.exports = { sendWelcomeEmail, sendOtpEmail };

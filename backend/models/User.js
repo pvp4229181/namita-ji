@@ -15,6 +15,34 @@ const addressSchema = new mongoose.Schema(
   { _id: true, timestamps: true }
 );
 
+// A real sub-schema (not a plain nested-object shape) so an absent
+// `verification` path stays `undefined` on hydrate instead of Mongoose
+// auto-vivifying it as `{}` — that undefined-vs-set distinction is how
+// login tells "account predates this feature, exempt" apart from
+// "not yet verified". See routes/auth.js.
+const otpChannelSchema = new mongoose.Schema(
+  {
+    codeHash: { type: String },
+    expiresAt: { type: Date },
+    verified: { type: Boolean },
+    attempts: { type: Number }
+  },
+  { _id: false }
+);
+
+// Wrapping email/phone in their own Schema (rather than a plain { email: {...} }
+// object) makes `verification` itself a real single-nested-subdocument type,
+// which Mongoose leaves genuinely `undefined` when absent — a plain nested
+// object path instead auto-vivifies to `{}` on every hydrate, which would
+// defeat the undefined-vs-set check in routes/auth.js.
+const verificationSchema = new mongoose.Schema(
+  {
+    email: otpChannelSchema,
+    phone: otpChannelSchema
+  },
+  { _id: false }
+);
+
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
@@ -39,7 +67,8 @@ const userSchema = new mongoose.Schema(
       status: { type: String, enum: ['pending', 'sent', 'failed'], default: 'pending' },
       sentAt: { type: Date },
       error: { type: String }
-    }
+    },
+    verification: verificationSchema
   },
   { timestamps: true }
 );
