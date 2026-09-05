@@ -6,12 +6,18 @@
 <title>Our Vision | Namita Ji</title>
 <meta name="description" content="Discover Namita Ji's vision to share the warmth of traditional Bihari food with homes across India." />
 <link rel="icon" href="/images/favicon.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/animations.css" />
 <style>
-  .vision-hero { padding:84px 20px; text-align:center; color:var(--white); background:linear-gradient(120deg,var(--maroon-dark),var(--maroon)); }
+  .vision-hero { position:relative; isolation:isolate; overflow:hidden; padding:84px 20px; text-align:center; color:var(--white); background:var(--maroon-dark); }
+  .vision-hero-bg { position:absolute; inset:0; z-index:-2; }
+  .vision-hero-bg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .65s ease-in-out; }
+  .vision-hero-bg img.active { opacity:1; }
+  .vision-hero::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(74,10,10,.88),rgba(104,16,16,.68) 54%,rgba(74,10,10,.42)); }
   .vision-hero h1 { color:var(--white); font-size:clamp(2.4rem,5vw,4.2rem); margin:10px auto 14px; max-width:760px; }
   .vision-hero h1 span { color:var(--gold); } .vision-hero p { color:var(--cream-dark); max-width:670px; margin:auto; }
   .vision-hero .feature-tag { color:var(--gold); background:rgba(255,255,255,.08); border-color:rgba(240,192,64,.45); }
@@ -24,14 +30,17 @@
   .value-card { padding:28px; border:1px solid var(--cream-dark); border-radius:var(--radius); background:var(--cream); }
   .value-card b { display:block; margin-bottom:16px; color:var(--gold-dark); font-size:.78rem; letter-spacing:.14em; } .value-card h3 { font-size:1.3rem; } .value-card p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.7; }
   .vision-promise { padding:60px 0; text-align:center; background:var(--maroon-dark); } .vision-promise h2 { color:var(--white); margin:10px auto; max-width:700px; } .vision-promise p { color:var(--cream-dark); max-width:620px; margin:auto; }
-  @media (max-width:760px) { .vision-story,.value-grid { grid-template-columns:1fr; } .vision-story { gap:30px; padding:56px 0; } .vision-values { padding:56px 0; } .vision-art { min-height:240px; } }
+  @media (max-width:760px) { .vision-hero { padding:66px 20px; } .vision-hero::after { background:rgba(74,10,10,.7); } .vision-story,.value-grid { grid-template-columns:1fr; } .vision-story { gap:30px; padding:56px 0; } .vision-values { padding:56px 0; } .vision-art { min-height:240px; } }
+  @media (prefers-reduced-motion:reduce) { .vision-hero-bg img { transition:none; } }
 </style>
 </head>
 <body>
+<div class="topbar"><div class="container"><span class="trust-marquee"><span class="trust-track"><span>Call: +91 6207227094</span><span>Email: hello@namitaji.com</span><span>Free delivery above ₹499</span><span>Made Fresh Daily</span><span>Pan-India Shipping</span><span>Call: +91 6207227094</span><span>Email: hello@namitaji.com</span><span>Free delivery above ₹499</span><span>Made Fresh Daily</span><span>Pan-India Shipping</span></span></span></div></div>
 <header class="site-header"><div class="header-inner">
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
-  <a href="/" class="brand"><div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div><span class="brand-name">Namita Ji Sweet</span></a>
+  <a href="/" class="brand"><div class="brand-badge"><img src="/images/logo.png" alt="Namita Ji logo" /></div><div><div class="brand-name">Namita Ji Sweet</div><div class="brand-tag">Traditional Indian Snacks &amp; Food</div></div></a>
   <nav class="main-nav" id="mainNav"><a href="/">Home</a><a href="/shop.html">Shop</a><a href="/about.html">Our Story</a><a href="/vision.html" class="active">Our Vision</a><a href="/contact.html">Contact</a></nav>
+  <div class="header-actions"><form class="header-search" action="/shop.html" role="search"><label class="sr-only" for="visionSearch">Search products</label><input id="visionSearch" name="search" type="search" placeholder="Search snacks &amp; sweets" autocomplete="off" /><button type="submit" aria-label="Search products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button></form><div class="profile-wrap" id="profileWrap"><button class="icon-btn" id="profileBtn" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><circle cx="12" cy="9.75" r="3.25"/><path d="M5.6 18.4c1.2-2.4 3.5-3.6 6.4-3.6s5.2 1.2 6.4 3.6"/></svg></button><div class="profile-menu" id="profileMenu"></div></div><button class="icon-btn" id="cartBtn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5h11l-1 11.5a2 2 0 0 1-2 1.8H9.5a2 2 0 0 1-2-1.8L6.5 8.5Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><span class="badge" id="cartBadge" hidden>0</span></button></div>
 </div></header>
 <main>
   <section class="vision-hero"><div class="container"><span class="feature-tag">Our Vision</span><h1>Food that carries <span>the feeling of home.</span></h1><p>We want the warmth of Bihar's family kitchens to reach every table—through recipes made with care, familiar flavours and the joy of sharing.</p></div></section>
@@ -40,6 +49,11 @@
   <section class="vision-promise"><div class="container"><span class="feature-tag">Our promise</span><h2>Made with respect for where every recipe comes from.</h2><p>As Namita Ji grows, we will keep the spirit of the family kitchen at the centre of everything we share.</p></div></section>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div><h4>Namita Ji</h4><p>Traditional Indian snacks &amp; food, made with love in Bihar and shipped fresh across India.</p></div><div><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/shop.html">Shop</a></li><li><a href="/about.html">Our Story</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/vision.html">Our Vision</a></li><li><a href="/contact.html">Contact Us</a></li></ul></div></div><div class="footer-bottom container">© <span id="year"></span> Namita Ji. All rights reserved.</div></footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear(); document.getElementById('hamburgerBtn').onclick = () => document.getElementById('mainNav').classList.toggle('open');</script>
+<div class="overlay" id="overlay"></div><aside class="drawer" id="cartDrawer"><div class="drawer-header"><h3>Your Cart</h3><button class="drawer-close" id="closeCart" aria-label="Close cart">×</button></div><div class="drawer-body" id="cartBody"></div><div class="drawer-footer" id="cartFooter" hidden><div class="summary-row"><span>Items Total</span><span id="sumItems">₹0</span></div><div class="summary-row"><span>Shipping</span><span id="sumShipping">₹0</span></div><div class="summary-row total"><span>To Pay</span><span id="sumTotal">₹0</span></div><button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button></div></aside>
+<div class="modal-backdrop" id="authBackdrop"><div class="modal"><button class="modal-close" id="authClose" aria-label="Close">×</button><h2 id="authTitle">Welcome Back</h2><p class="sub" id="authSub">Log in to continue to checkout</p><div class="form-error" id="authError"></div><form id="authForm"><div class="field" id="nameField" hidden><label>Full Name</label><input type="text" id="authName" autocomplete="name" /></div><div class="field"><label>Email</label><input type="email" id="authEmail" autocomplete="email" required /></div><div class="field" id="phoneField" hidden><label>Phone</label><input type="tel" id="authPhone" autocomplete="tel" /></div><div class="field"><label>Password</label><input type="password" id="authPassword" autocomplete="current-password" required /></div><button type="submit" class="btn btn-primary btn-block" id="authSubmit">Log In</button></form><div class="form-toggle"><span id="authToggleText">New here?</span><button id="authToggleBtn">Create an account</button></div></div></div>
+<div class="modal-backdrop" id="checkoutBackdrop"><div class="modal"><button class="modal-close" id="checkoutClose" aria-label="Close">×</button><h2>Delivery Address</h2><p class="sub">Where should we deliver your order?</p><div class="form-error" id="checkoutError"></div><form id="checkoutForm"><div class="field"><label>Address Line 1</label><input type="text" id="addrLine1" required /></div><div class="field"><label>Address Line 2 (optional)</label><input type="text" id="addrLine2" /></div><div class="field"><label>City</label><input type="text" id="addrCity" required /></div><div class="field"><label>State</label><input type="text" id="addrState" required /></div><div class="field"><label>Pincode</label><input type="text" id="addrPincode" required /></div><div class="field"><label>Phone</label><input type="tel" id="addrPhone" required /></div><button type="submit" class="btn btn-primary btn-block" id="checkoutSubmit">Pay Now</button></form></div></div>
+<div id="toast-root"></div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script><script src="/js/api.js"></script><script src="/js/auth.js"></script><script src="/js/cart.js"></script><script src="/js/checkout.js"></script><script src="/js/main.js"></script><script src="/js/animations.js"></script>
+<script src="/js/vision-hero.js"></script>
 </body>
 </html>
