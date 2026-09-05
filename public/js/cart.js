@@ -2,11 +2,20 @@
 // NOTE: no coupon/promo code field anywhere in this drawer, by design.
 const Cart = (() => {
   const KEY = 'nj_cart';
+  const OBJECT_ID_RE = /^[a-f0-9]{24}$/i;
   let items = [];
   try {
     items = JSON.parse(localStorage.getItem(KEY)) || [];
   } catch (e) {
     items = [];
+  }
+  // Carts saved before productId was a real Mongo _id (e.g. a static-catalog
+  // slug like "thekua") would otherwise sail through to checkout and get
+  // rejected there. Drop them here, once, instead of failing at order time.
+  const validItems = items.filter((i) => OBJECT_ID_RE.test(i.productId));
+  if (validItems.length !== items.length) {
+    items = validItems;
+    localStorage.setItem(KEY, JSON.stringify(items));
   }
 
   const SHIPPING_FLAT_FEE = 49;
