@@ -45,7 +45,7 @@ const sampleProducts = [
     price: 150,
     mrp: 180,
     unit: '250g',
-    image: '/images/litti-chokha-delicious.jpg'
+    image: '/images/litti-masala-mix.jpg'
   },
   {
     name: 'Chana Chur',
@@ -55,7 +55,7 @@ const sampleProducts = [
     price: 140,
     mrp: 160,
     unit: '350g',
-    image: '/images/besan-sev.jpg'
+    image: '/images/chana-chur.jpg'
   },
   {
     name: 'Khaja',
@@ -66,6 +66,72 @@ const sampleProducts = [
     mrp: 280,
     unit: '400g',
     image: '/images/khaja-delicious.jpg'
+  },
+  {
+    name: 'Balushahi',
+    slug: 'balushahi',
+    description: 'Rich, flaky ghee sweet with a delicate sugar glaze.',
+    category: 'Sweets',
+    price: 280,
+    mrp: 330,
+    unit: '400g',
+    image: '/images/balushahi.jpg',
+    tags: ['ghee sweet', 'traditional mithai']
+  },
+  {
+    name: 'Gaya Tilkut',
+    slug: 'gaya-tilkut',
+    description: 'Classic Gaya sweet made with roasted sesame and sugar.',
+    category: 'Sweets',
+    price: 300,
+    mrp: 350,
+    unit: '300g',
+    image: '/images/gaya-tilkut.jpg',
+    tags: ['sesame', 'gaya special', 'tilkut']
+  },
+  {
+    name: 'Pedakiya',
+    slug: 'pedakiya',
+    description: 'Crisp Bihari pastry filled with coconut and khoya.',
+    category: 'Sweets',
+    price: 260,
+    mrp: 300,
+    unit: '400g',
+    image: '/images/pedakiya.jpg',
+    tags: ['gujiya', 'coconut', 'khoya']
+  },
+  {
+    name: 'Masala Peanuts',
+    slug: 'masala-peanuts',
+    description: 'Crunchy peanuts coated in a spicy gram-flour masala.',
+    category: 'Namkeen',
+    price: 160,
+    mrp: 190,
+    unit: '300g',
+    image: '/images/masala-peanuts.jpg',
+    tags: ['peanut', 'spicy', 'chai time']
+  },
+  {
+    name: 'Moong Dal Namkeen',
+    slug: 'moong-dal-namkeen',
+    description: 'Lightly salted and crisp fried moong dal snack.',
+    category: 'Namkeen',
+    price: 170,
+    mrp: 200,
+    unit: '300g',
+    image: '/images/moong-dal-namkeen.jpg',
+    tags: ['moong dal', 'crunchy', 'tea snack']
+  },
+  {
+    name: 'Khatta Meetha Mix',
+    slug: 'khatta-meetha-mix',
+    description: 'A sweet, tangy and crunchy namkeen blend for chai time.',
+    category: 'Namkeen',
+    price: 180,
+    mrp: 220,
+    unit: '400g',
+    image: '/images/khatta-meetha-mix.jpg',
+    tags: ['sweet and sour', 'mixture', 'chai time']
   }
 ];
 

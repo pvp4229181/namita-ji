@@ -59,7 +59,7 @@ const STATIC_PRODUCTS = [
     price: 150,
     mrp: 180,
     unit: '250g',
-    image: '/images/litti-chokha-delicious.jpg',
+    image: '/images/litti-masala-mix.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -73,7 +73,7 @@ const STATIC_PRODUCTS = [
     price: 140,
     mrp: 160,
     unit: '350g',
-    image: '/images/besan-sev.jpg',
+    image: '/images/chana-chur.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -91,6 +91,90 @@ const STATIC_PRODUCTS = [
     stock: 100,
     isActive: true,
     tags: []
+  },
+  {
+    _id: 'balushahi',
+    name: 'Balushahi',
+    slug: 'balushahi',
+    description: 'Rich, flaky ghee sweet with a delicate sugar glaze.',
+    category: 'Sweets',
+    price: 280,
+    mrp: 330,
+    unit: '400g',
+    image: '/images/balushahi.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['ghee sweet', 'traditional mithai']
+  },
+  {
+    _id: 'tilkut',
+    name: 'Gaya Tilkut',
+    slug: 'gaya-tilkut',
+    description: 'Classic Gaya sweet made with roasted sesame and sugar.',
+    category: 'Sweets',
+    price: 300,
+    mrp: 350,
+    unit: '300g',
+    image: '/images/gaya-tilkut.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['sesame', 'gaya special', 'tilkut']
+  },
+  {
+    _id: 'pedakiya',
+    name: 'Pedakiya',
+    slug: 'pedakiya',
+    description: 'Crisp Bihari pastry filled with coconut and khoya.',
+    category: 'Sweets',
+    price: 260,
+    mrp: 300,
+    unit: '400g',
+    image: '/images/pedakiya.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['gujiya', 'coconut', 'khoya']
+  },
+  {
+    _id: 'masala-peanuts',
+    name: 'Masala Peanuts',
+    slug: 'masala-peanuts',
+    description: 'Crunchy peanuts coated in a spicy gram-flour masala.',
+    category: 'Namkeen',
+    price: 160,
+    mrp: 190,
+    unit: '300g',
+    image: '/images/masala-peanuts.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['peanut', 'spicy', 'chai time']
+  },
+  {
+    _id: 'moong-dal-namkeen',
+    name: 'Moong Dal Namkeen',
+    slug: 'moong-dal-namkeen',
+    description: 'Lightly salted and crisp fried moong dal snack.',
+    category: 'Namkeen',
+    price: 170,
+    mrp: 200,
+    unit: '300g',
+    image: '/images/moong-dal-namkeen.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['moong dal', 'crunchy', 'tea snack']
+  },
+  {
+    _id: 'khatta-meetha-mix',
+    name: 'Khatta Meetha Mix',
+    slug: 'khatta-meetha-mix',
+    description: 'A sweet, tangy and crunchy namkeen blend for chai time.',
+    category: 'Namkeen',
+    price: 180,
+    mrp: 220,
+    unit: '400g',
+    image: '/images/khatta-meetha-mix.jpg',
+    stock: 100,
+    isActive: true,
+    tags: ['sweet and sour', 'mixture', 'chai time']
   }
 ];
 
