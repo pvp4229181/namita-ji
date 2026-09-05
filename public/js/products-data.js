@@ -17,7 +17,7 @@ const STATIC_PRODUCTS = [
     price: 180,
     mrp: 220,
     unit: '400g',
-    image: '/images/mixture.jpg',
+    image: '/images/mixture-delicious.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -31,7 +31,7 @@ const STATIC_PRODUCTS = [
     price: 220,
     mrp: 260,
     unit: '500g',
-    image: '/images/thekua.jpg',
+    image: '/images/thekua-delicious.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -45,7 +45,7 @@ const STATIC_PRODUCTS = [
     price: 260,
     mrp: 300,
     unit: '400g',
-    image: '/images/anarsa.jpg',
+    image: '/images/anarsa-delicious.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -59,7 +59,7 @@ const STATIC_PRODUCTS = [
     price: 150,
     mrp: 180,
     unit: '250g',
-    image: '/images/litti-chokha.jpg',
+    image: '/images/litti-chokha-delicious.jpg',
     stock: 100,
     isActive: true,
     tags: []
@@ -87,7 +87,7 @@ const STATIC_PRODUCTS = [
     price: 240,
     mrp: 280,
     unit: '400g',
-    image: '/images/khaja.jpg',
+    image: '/images/khaja-delicious.jpg',
     stock: 100,
     isActive: true,
     tags: []
